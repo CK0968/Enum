@@ -1,0 +1,45 @@
+package enums;
+
+import javax.swing.JOptionPane;
+
+import enums.Day.DayType;
+
+public class Daymain {
+    public static void main(String[] args) {
+        String input = JOptionPane.showInputDialog(null, 
+            "Enter a day (e.g., Monday):", 
+            "Day Type Checker", 
+            JOptionPane.QUESTION_MESSAGE);
+        
+        if (input == null || input.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, 
+                "No day entered. Program will exit.", 
+                "Input Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String day = input.trim().toLowerCase();
+        
+        DayType dayType;
+        
+        if (day.equals("saturday") || day.equals("sunday")) {
+            dayType = DayType.WEEKEND;
+        } else if (day.equals("monday") || day.equals("tuesday") || 
+                   day.equals("wednesday") || day.equals("thursday") || 
+                   day.equals("friday")) {
+            dayType = DayType.WEEKDAY;
+        } else {
+            JOptionPane.showMessageDialog(null, 
+                "Invalid day entered: " + input + "\nPlease enter a valid day of the week.", 
+                "Input Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(null, 
+            "Day Type: " + dayType, 
+            "Result", 
+            JOptionPane.INFORMATION_MESSAGE);
+    }
+}
