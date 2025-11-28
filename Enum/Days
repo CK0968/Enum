@@ -1,0 +1,8 @@
+package enums;
+
+public class Day {
+	enum DayType {
+	    WEEKDAY, WEEKEND
+	}
+
+}
