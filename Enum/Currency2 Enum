@@ -1,0 +1,23 @@
+package enums;
+
+public class Currency2 {
+	enum Currency {
+	    USD(57.00),
+	    EUR(62.00),
+	    JPY(0.38);
+	    
+	    private final double rateToPhp;
+	    
+	    Currency(double rateToPhp) {
+	        this.rateToPhp = rateToPhp;
+	    }
+	    
+	    public double getRateToPhp() {
+	        return rateToPhp;
+	    }
+	    
+	    public double convertToPhp(double amount) {
+	        return amount * rateToPhp;
+	    }
+	}
+}
