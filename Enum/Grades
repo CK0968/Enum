@@ -1,0 +1,12 @@
+package enums;
+
+public class Grades {
+	enum GradeRating {
+        EXCELLENT,
+        VERY_GOOD,
+        GOOD,
+        FAIR,
+        POOR
+    }
+}
+
