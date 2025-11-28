@@ -1,0 +1,71 @@
+package enums;
+
+import javax.swing.JOptionPane;
+
+import enums.Currency2.Currency;
+
+public class Currency2main  {
+    public static void main(String[] args) {
+        try {
+            String amountStr = JOptionPane.showInputDialog(
+                null,
+                "Enter amount:",
+                "Currency Converter",
+                JOptionPane.QUESTION_MESSAGE
+            );
+            
+            if (amountStr == null) {
+                return; 
+            }
+            
+            double amount = Double.parseDouble(amountStr);
+            
+            Object[] currencies = {"USD", "EUR", "JPY"};
+            String selectedCurrency = (String) JOptionPane.showInputDialog(
+                null,
+                "Enter currency (USD/EUR/JPY):",
+                "Currency Converter",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                currencies,
+                currencies[0]
+            );
+            
+            if (selectedCurrency == null) {
+                return; 
+            }
+            
+            Currency currency = Currency.valueOf(selectedCurrency);
+            double amountInPhp = currency.convertToPhp(amount);
+            
+            String message = String.format(
+                "Enter amount: %.2f\nEnter currency (USD/EUR/JPY): %s\nAmount in PHP: ₱%.2f",
+                amount,
+                selectedCurrency,
+                amountInPhp
+            );
+            
+            JOptionPane.showMessageDialog(
+                null,
+                message,
+                "Conversion Result",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Invalid amount entered. Please enter a valid number.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(
+                null,
+                "Invalid currency selected.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+}
