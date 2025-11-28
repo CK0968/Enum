@@ -1,0 +1,18 @@
+package enums;
+
+public class Order {
+	enum MenuItem {
+	    BURGER(1, "BURGER", 50),
+	    FRIES(2, "FRIES", 50),
+	    DRINK(3, "DRINK", 30);
+	    
+	    int number, price;
+	    String name;
+	    
+	    MenuItem(int number, String name, int price) {
+	        this.number = number;
+	        this.name = name;
+	        this.price = price;
+	    }
+	}
+}
