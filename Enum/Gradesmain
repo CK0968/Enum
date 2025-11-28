@@ -1,0 +1,57 @@
+package enums;
+
+import javax.swing.JOptionPane;
+
+import enums.Grades.GradeRating;
+
+public class Gradesmain {
+    public static void main(String[] args) {
+        String input = JOptionPane.showInputDialog(null, 
+            "Enter your grade (0-100):", 
+            "Grade Rating System", 
+            JOptionPane.QUESTION_MESSAGE);
+        
+        if (input == null) {
+            System.exit(0);
+        }
+        
+        try {
+            int grade = Integer.parseInt(input);
+            
+            if (grade < 0 || grade > 100) {
+                JOptionPane.showMessageDialog(null, 
+                    "Invalid grade! Please enter a value between 0 and 100.", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            GradeRating rating = getRating(grade);
+            
+            JOptionPane.showMessageDialog(null, 
+                "Enter your grade (0-100): " + grade + "\nYour rating: " + rating, 
+                "Grade Result", 
+                JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, 
+                "Invalid input! Please enter a numeric value.", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private static GradeRating getRating(int grade) {
+        if (grade >= 90) {
+            return GradeRating.EXCELLENT;
+        } else if (grade >= 80) {
+            return GradeRating.VERY_GOOD;
+        } else if (grade >= 70) {
+            return GradeRating.GOOD;
+        } else if (grade >= 60) {
+            return GradeRating.FAIR;
+        } else {
+            return GradeRating.POOR;
+        }
+    }
+}
