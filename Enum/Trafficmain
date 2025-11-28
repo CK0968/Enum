@@ -1,0 +1,52 @@
+package enums;
+
+import javax.swing.JOptionPane;
+
+public class Trafficmain {
+
+	public static void main(String[] args) {
+        String input = JOptionPane.showInputDialog(
+            null,
+            "Enter traffic light color (Red/Yellow/Green):",
+            "Traffic Light Simulation",
+            JOptionPane.QUESTION_MESSAGE
+        );
+        
+        if (input == null || input.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                null,
+                "No color entered. Program will exit.",
+                "Traffic Light Simulation",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+        
+        String color = input.trim().toUpperCase();
+        
+        String action = "";
+        
+        if (color.equals("RED")) {
+            action = "STOP";
+        } else if (color.equals("YELLOW")) {
+            action = "SLOW DOWN";
+        } else if (color.equals("GREEN")) {
+            action = "GO";
+        } else {
+            JOptionPane.showMessageDialog(
+                null,
+                "Invalid color! Please enter Red, Yellow, or Green.",
+                "Traffic Light Simulation",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(
+            null,
+            "Action: " + action,
+            "Traffic Light Simulation",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+}
