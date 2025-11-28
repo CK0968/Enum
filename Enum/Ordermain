@@ -1,0 +1,20 @@
+package enums;
+
+import javax.swing.JOptionPane;
+
+import enums.Order.MenuItem;
+
+public class Ordermain {
+	    public static void main(String[] args) {
+	        String menu = "Menu:\n1 - BURGER\n2 - FRIES\n3 - DRINK\n\nEnter your choice:";
+	        int choice = Integer.parseInt(JOptionPane.showInputDialog(menu));
+	        
+	        for (MenuItem item : MenuItem.values()) {
+	            if (item.number == choice) {
+	                JOptionPane.showMessageDialog(null, "You ordered: " + item.name + "\nPrice: ₱" + item.price);
+	                return;
+	            }
+	        }
+	        JOptionPane.showMessageDialog(null, "Invalid choice!");
+	    }
+	}
